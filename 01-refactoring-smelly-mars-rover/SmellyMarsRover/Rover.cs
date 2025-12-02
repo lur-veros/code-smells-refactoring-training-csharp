@@ -125,13 +125,12 @@ namespace SmellyMarsRover
         {
             return obj is Rover rover &&
                    EqualityComparer<Direction>.Default.Equals(_direction, rover._direction) &&
-                   _y == rover._y &&
-                   _x == rover._x;
+                   EqualityComparer<Coordinates>.Default.Equals(_coordinates, rover._coordinates);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_direction, _y, _x);
+            return HashCode.Combine(_direction, _coordinates);
         }
     }
 
