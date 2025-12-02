@@ -5,10 +5,19 @@ namespace SmellyMarsRover
     public class Rover
     {
         private string _direction;
+        private Direction _directionType;
         private int _y;
-        private int _x;
+        private int _x;        
 
-        public string Direction { get => _direction; set => _direction = value; }
+        public string Direction 
+        { 
+            get => _direction; 
+            set
+            {
+                _direction = value;
+                _directionType = new Direction(value);
+            } 
+        }
 
         public Rover(int x, int y, string direction)
         {
@@ -118,4 +127,5 @@ namespace SmellyMarsRover
             return $"{nameof(Direction)}: {Direction}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
         }
     }
+    internal record Direction(string Value);
 }
