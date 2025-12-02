@@ -4,20 +4,14 @@ using System.Collections.Generic;
 namespace SmellyMarsRover
 {
     public class Rover
-    {
-        private string _direction;
-        private Direction _directionType;
+    {        
+        private Direction _direction;
         private int _y;
         private int _x;        
 
-        public string Direction 
-        { 
-            get => _direction; 
-            set
-            {
-                _direction = value;
-                _directionType = new Direction(value);
-            } 
+        public string Direction
+        {
+            set => _direction = new Direction(value);
         }
 
         public Rover(int x, int y, string direction)
@@ -107,30 +101,30 @@ namespace SmellyMarsRover
 
         private bool IsFacingWest()
         {
-            return _directionType.Value.Equals("W");
+            return _direction.Value.Equals("W");
         }
 
         private bool IsFacingSouth()
         {
-            return _directionType.Value.Equals("S");
+            return _direction.Value.Equals("S");
         }
 
         private bool IsFacingNorth()
         {
-            return _directionType.Value.Equals("N");
+            return _direction.Value.Equals("N");
         }
 
         public override bool Equals(object obj)
         {
             return obj is Rover rover &&
-                   EqualityComparer<Direction>.Default.Equals(_directionType, rover._directionType) &&
+                   EqualityComparer<Direction>.Default.Equals(_direction, rover._direction) &&
                    _y == rover._y &&
                    _x == rover._x;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_directionType, _y, _x);
+            return HashCode.Combine(_direction, _y, _x);
         }
     }
 
