@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SmellyMarsRover
 {
@@ -106,26 +107,17 @@ namespace SmellyMarsRover
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Rover)obj);
-        }
-
-        protected bool Equals(Rover other)
-        {
-            return Direction == other.Direction && _y == other._y && _x == other._x;
+            return obj is Rover rover &&
+                   EqualityComparer<Direction>.Default.Equals(_directionType, rover._directionType) &&
+                   _y == rover._y &&
+                   _x == rover._x;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Direction, _y, _x);
-        }
-
-        public override string ToString()
-        {
-            return $"{nameof(Direction)}: {Direction}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
+            return HashCode.Combine(_directionType, _y, _x);
         }
     }
+
     internal record Direction(string Value);
 }
