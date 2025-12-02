@@ -7,7 +7,8 @@ namespace SmellyMarsRover
     {        
         private Direction _direction;
         private int _y;
-        private int _x;        
+        private int _x;
+        private Coordinates _coordinates;
 
         public string Direction
         {
@@ -24,6 +25,7 @@ namespace SmellyMarsRover
         {
             _y = y;
             _x = x;
+            _coordinates = new Coordinates(x, y);
         }
 
         public void Receive(string commandsSequence)
@@ -134,4 +136,5 @@ namespace SmellyMarsRover
     }
 
     internal record Direction(string Value);
+    internal record Coordinates(int X, int Y);
 }
