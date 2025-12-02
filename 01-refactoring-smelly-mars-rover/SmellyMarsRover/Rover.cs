@@ -88,23 +88,23 @@ namespace SmellyMarsRover
 
                     if (IsFacingNorth())
                     {
-                        SetCoordinates(_x, _y + displacement);
+                        SetCoordinates(_coordinates.X, _coordinates.Y + displacement);
                     }
                     else if (IsFacingSouth())
                     {
-                        SetCoordinates(_x, _y - displacement);
+                        SetCoordinates(_coordinates.X, _coordinates.Y - displacement);
                     }
                     else if (IsFacingWest())
                     {
-                        SetCoordinates(_x - displacement, _y);
+                        SetCoordinates(_coordinates.X - displacement, _coordinates.Y);
                     }
                     else
                     {
-                        SetCoordinates(_x + displacement, _y);
+                        SetCoordinates(_coordinates.X + displacement, _coordinates.Y);
                     }
                 }
             }
-        }
+        }         
 
         private bool IsFacingWest()
         {
