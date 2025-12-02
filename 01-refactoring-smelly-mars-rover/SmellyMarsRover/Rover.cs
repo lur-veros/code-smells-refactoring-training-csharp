@@ -5,9 +5,7 @@ namespace SmellyMarsRover
 {
     public class Rover
     {        
-        private Direction _direction;
-        private int _y;
-        private int _x;
+        private Direction _direction;        
         private Coordinates _coordinates;
 
         public string Direction
@@ -23,8 +21,6 @@ namespace SmellyMarsRover
 
         private void SetCoordinates(int x, int y)
         {
-            _y = y;
-            _x = x;
             _coordinates = new Coordinates(x, y);
         }
 
