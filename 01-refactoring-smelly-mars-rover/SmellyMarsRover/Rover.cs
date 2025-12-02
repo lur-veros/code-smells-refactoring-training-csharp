@@ -36,9 +36,9 @@ namespace SmellyMarsRover
                 if (command.Equals("l"))
                 {
                     // Rotate Rover to the left
-                    if (Direction.Equals("N"))
+                    if (IsFacingNorth())
                     {
-                        Direction = "W";                     
+                        Direction = "W";
                     }
                     else if (Direction.Equals("S"))
                     {
@@ -50,13 +50,13 @@ namespace SmellyMarsRover
                     }
                     else
                     {
-                        Direction = "N";                     
+                        Direction = "N";
                     }
                 }
                 else if (command.Equals("r"))
                 {
                     // Rotate Rover to the right
-                    if (Direction.Equals("N"))
+                    if (IsFacingNorth())
                     {
                         Direction = "E";                    
                     }
@@ -103,6 +103,11 @@ namespace SmellyMarsRover
                     }
                 }
             }
+        }
+
+        private bool IsFacingNorth()
+        {
+            return _directionType.Value.Equals("N");
         }
 
         public override bool Equals(object obj)
