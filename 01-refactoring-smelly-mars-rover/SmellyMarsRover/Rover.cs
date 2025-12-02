@@ -85,7 +85,7 @@ namespace SmellyMarsRover
 
                     var displacement = displacement1;
 
-                    if (Direction.Equals("N"))
+                    if (IsFacingNorth())
                     {
                         _y += displacement;
                     }
