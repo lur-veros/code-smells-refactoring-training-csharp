@@ -40,7 +40,7 @@ namespace SmellyMarsRover
                     {
                         Direction = "W";
                     }
-                    else if (Direction.Equals("S"))
+                    else if (IsFacingSouth())
                     {
                         Direction = "E";
                     }
@@ -60,7 +60,7 @@ namespace SmellyMarsRover
                     {
                         Direction = "E";                    
                     }
-                    else if (Direction.Equals("S"))
+                    else if (IsFacingSouth())
                     {
                         Direction = "W";                      
                     }
@@ -103,6 +103,11 @@ namespace SmellyMarsRover
                     }
                 }
             }
+        }
+
+        private bool IsFacingSouth()
+        {
+            return _directionType.Value.Equals("S");
         }
 
         private bool IsFacingNorth()
