@@ -92,11 +92,11 @@ namespace SmellyMarsRover
                     }
                     else if (IsFacingWest())
                     {
-                        SetCoordinates(_coordinates.X - displacement, _coordinates.Y);
+                        _coordinates = _coordinates.MoveAlongXAxis(-displacement);
                     }
                     else
                     {
-                        SetCoordinates(_coordinates.X + displacement, _coordinates.Y);
+                        _coordinates = _coordinates.MoveAlongXAxis(displacement);
                     }
                 }
             }
@@ -136,6 +136,11 @@ namespace SmellyMarsRover
         public Coordinates MoveAlongYAxis(int displacement)
         {
             return new Coordinates(this.X, this.Y + displacement);
+        }
+
+        public Coordinates MoveAlongXAxis(int displacement)
+        {
+            return new Coordinates(this.X + displacement, this.Y);
         }
     }
 }
