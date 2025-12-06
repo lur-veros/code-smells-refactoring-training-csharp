@@ -84,11 +84,11 @@ namespace SmellyMarsRover
 
                     if (IsFacingNorth())
                     {
-                        SetCoordinates(_coordinates.X, _coordinates.Y + displacement);
+                        _coordinates = _coordinates.MoveAlongYAxis(displacement);
                     }
                     else if (IsFacingSouth())
                     {
-                        SetCoordinates(_coordinates.X, _coordinates.Y - displacement);
+                        _coordinates = _coordinates.MoveAlongYAxis(-displacement);
                     }
                     else if (IsFacingWest())
                     {
@@ -100,7 +100,7 @@ namespace SmellyMarsRover
                     }
                 }
             }
-        }         
+        }
 
         private bool IsFacingWest()
         {
@@ -131,5 +131,11 @@ namespace SmellyMarsRover
     }
 
     internal record Direction(string Value);
-    internal record Coordinates(int X, int Y);
+    internal record Coordinates(int X, int Y)
+    {
+        public Coordinates MoveAlongYAxis(int displacement)
+        {
+            return new Coordinates(this.X, this.Y + displacement);
+        }
+    }
 }
