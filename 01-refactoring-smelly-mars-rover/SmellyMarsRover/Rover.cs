@@ -45,22 +45,10 @@ namespace SmellyMarsRover
 
                     var displacement = displacement1;
 
-                    if (_direction.IsFacingNorth())
-                    {
-                        _coordinates = _coordinates.MoveAlongYAxis(displacement);
-                    }
-                    else if (_direction.IsFacingSouth())
-                    {
-                        _coordinates = _coordinates.MoveAlongYAxis(-displacement);
-                    }
-                    else if (_direction.IsFacingWest())
-                    {
-                        _coordinates = _coordinates.MoveAlongXAxis(-displacement);
-                    }
-                    else
-                    {
-                        _coordinates = _coordinates.MoveAlongXAxis(displacement);
-                    }
+                    Coordinates coordinates = _coordinates;
+                    coordinates = _direction.Move(coordinates, displacement, this);
+
+                    _coordinates = coordinates;
                 }
             }
         }

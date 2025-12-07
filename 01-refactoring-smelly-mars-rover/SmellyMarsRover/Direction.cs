@@ -99,4 +99,24 @@ internal abstract record Direction(string Value)
             return Create(EAST);
         }
     }
+
+    public Coordinates Move(Coordinates coordinates, int displacement, Rover rover)
+    {
+        if (IsFacingNorth())
+        {
+            return coordinates.MoveAlongYAxis(displacement);
+        }
+
+        if (IsFacingSouth())
+        {
+            return coordinates.MoveAlongYAxis(-displacement);
+        }
+
+        if (IsFacingWest())
+        {
+            return coordinates.MoveAlongXAxis(-displacement);
+        }
+
+        return coordinates.MoveAlongXAxis(displacement);
+    }
 }
