@@ -46,31 +46,18 @@ internal abstract record Direction(string Value)
 
     public abstract Direction RotateLeft();
 
-    public Direction RotateRight()
-    {
-        if (IsFacingNorth())
-        {
-            return Create(EAST);
-        }
-
-        if (IsFacingSouth())
-        {
-            return Create(WEST);           
-        }
-
-        if (IsFacingWest())
-        {
-            return Create(NORTH);
-        }
-
-        return Create(SOUTH);
-    }
+    public abstract Direction RotateRight();
 
     internal record East() : Direction(EAST)
     {
         public override Direction RotateLeft()
         {
             return Create(NORTH);
+        }
+
+        public override Direction RotateRight()
+        {
+            return Create(SOUTH);
         }
     }
 
@@ -80,6 +67,11 @@ internal abstract record Direction(string Value)
         {
             return Create(SOUTH);
         }
+
+        public override Direction RotateRight()
+        {
+            return Create(NORTH);
+        }
     }
 
     private record South() : Direction(SOUTH)
@@ -88,6 +80,11 @@ internal abstract record Direction(string Value)
         {
             return Create(EAST);
         }
+
+        public override Direction RotateRight()
+        {
+            return Create(WEST);
+        }
     }
 
     private record North() : Direction(NORTH)
@@ -95,6 +92,11 @@ internal abstract record Direction(string Value)
         public override Direction RotateLeft()
         {
             return Create(WEST);
+        }
+
+        public override Direction RotateRight()
+        {
+            return Create(EAST);
         }
     }
 }
