@@ -45,10 +45,7 @@ namespace SmellyMarsRover
 
                     var displacement = displacement1;
 
-                    Coordinates coordinates = _coordinates;
-                    coordinates = _direction.Move(coordinates, displacement, this);
-
-                    _coordinates = coordinates;
+                    _coordinates = _direction.Move(_coordinates, displacement);
                 }
             }
         }
