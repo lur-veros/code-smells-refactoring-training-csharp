@@ -8,14 +8,9 @@ namespace SmellyMarsRover
         private Direction _direction;        
         private Coordinates _coordinates;
 
-        public string Direction
-        {
-            set => _direction = new Direction(value);
-        }
-
         public Rover(int x, int y, string direction)
         {
-            Direction = direction;
+            _direction = SmellyMarsRover.Direction.Create(direction);
             SetCoordinates(x, y);
         }
 
@@ -35,19 +30,19 @@ namespace SmellyMarsRover
                     // Rotate Rover to the left
                     if (_direction.IsFacingNorth())
                     {
-                        Direction = "W";
+                        _direction = Direction.Create("W");
                     }
                     else if (_direction.IsFacingSouth())
                     {
-                        Direction = "E";
+                        _direction = Direction.Create("E");
                     }
                     else if (_direction.IsFacingWest())
                     {
-                        Direction = "S";
+                        _direction = Direction.Create("S");
                     }
                     else
                     {
-                        Direction = "N";
+                        _direction = Direction.Create("N");
                     }
                 }
                 else if (command.Equals("r"))
@@ -55,19 +50,19 @@ namespace SmellyMarsRover
                     // Rotate Rover to the right
                     if (_direction.IsFacingNorth())
                     {
-                        Direction = "E";                    
+                        _direction = Direction.Create("E");                    
                     }
                     else if (_direction.IsFacingSouth())
                     {
-                        Direction = "W";                      
+                        _direction = Direction.Create("W");                      
                     }
                     else if (_direction.IsFacingWest())
                     {
-                        Direction = "N";                      
+                        _direction = Direction.Create("N");                      
                     }
                     else
                     {
-                        Direction = "S";                     
+                        _direction = Direction.Create("S");                     
                     }
                 }
                 else

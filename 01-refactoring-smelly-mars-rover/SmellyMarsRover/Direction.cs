@@ -16,4 +16,9 @@ internal record Direction(string Value)
     {
         return this.Value.Equals("W");
     }
+
+    public static Direction Create(string value)
+    {
+        return new Direction(value);
+    }
 }
