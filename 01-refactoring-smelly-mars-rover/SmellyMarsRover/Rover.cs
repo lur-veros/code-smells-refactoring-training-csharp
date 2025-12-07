@@ -22,6 +22,21 @@ namespace SmellyMarsRover
 
         public void Receive(string commandsSequence)
         {
+            var commands = ExtractCommands(commandsSequence);
+
+            Execute(commands);
+        }
+
+        private void Execute(IList<string> commands)
+        {
+            foreach (var command in commands)
+            {
+                Execute(command);
+            }
+        }
+
+        private IList<string> ExtractCommands(string commandsSequence)
+        {
             IList<string> commands = new List<string>();
             for (var i = 0; i < commandsSequence.Length; ++i)
             {
@@ -29,10 +44,7 @@ namespace SmellyMarsRover
                 commands.Add(command);
             }
 
-            foreach (var command in commands)
-            {
-                Execute(command);
-            }
+            return commands;
         }
 
         private void Execute(string command)
