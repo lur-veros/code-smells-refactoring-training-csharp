@@ -9,21 +9,6 @@ internal abstract record Direction(string Value)
     private const string SOUTH = "S";
     private const string NORTH = "N";
 
-    public bool IsFacingNorth()
-    {
-        return this.Value.Equals(NORTH);
-    }
-
-    public bool IsFacingSouth()
-    {
-        return this.Value.Equals(SOUTH);
-    }
-
-    public bool IsFacingWest()
-    {
-        return this.Value.Equals(WEST);  
-    }
-
     public static Direction Create(string directionEncoding)
     {
         if (directionEncoding.Equals(NORTH))
