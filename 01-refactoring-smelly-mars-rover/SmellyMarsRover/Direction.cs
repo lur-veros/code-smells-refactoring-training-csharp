@@ -1,6 +1,8 @@
+using System;
+
 namespace SmellyMarsRover;
 
-internal record Direction(string Value)
+internal abstract record Direction(string Value)
 {
     private const string WEST = "W";
     private const string EAST = "E";
@@ -22,31 +24,57 @@ internal record Direction(string Value)
         return this.Value.Equals(WEST);  
     }
 
-    public static Direction Create(string value)
+    public static Direction Create(string directionEncoding)
     {
-        return new Direction(value);
+        if (directionEncoding.Equals(NORTH))
+        {
+            return new North();
+        }
+
+        if (directionEncoding.Equals(SOUTH))
+        {
+            return new South();
+        }
+
+        if (directionEncoding.Equals(WEST))
+        {
+            return new West();
+        }
+
+        return new East();
     }
 
-    public Direction RotateLeft()
+    public abstract Direction RotateLeft();
+    
+    internal record East() : Direction(EAST)
     {
-        Direction direction;
-        if (IsFacingNorth())
+        public override Direction RotateLeft()
         {
-            direction = Create(WEST);
+            return Create(NORTH);
         }
-        else if (IsFacingSouth())
-        {
-            direction = Create(EAST);
-        }
-        else if (IsFacingWest())
-        {
-            direction = Create(SOUTH);
-        }
-        else
-        {
-            direction = Create(NORTH);
-        }
+    }
 
-        return direction;
+    private record West() : Direction(WEST)
+    {
+        public override Direction RotateLeft()
+        {
+            return Create(SOUTH);
+        }
+    }
+
+    private record South() : Direction(SOUTH)
+    {
+        public override Direction RotateLeft()
+        {
+            return Create(EAST);
+        }
+    }
+
+    private record North() : Direction(NORTH)
+    {
+        public override Direction RotateLeft()
+        {
+            return Create(WEST);
+        }
     }
 }
