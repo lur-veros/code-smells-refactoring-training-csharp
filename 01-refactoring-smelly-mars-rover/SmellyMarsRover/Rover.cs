@@ -22,10 +22,15 @@ namespace SmellyMarsRover
 
         public void Receive(string commandsSequence)
         {
+            IList<string> commands = new List<string>();
             for (var i = 0; i < commandsSequence.Length; ++i)
             {
                 var command = commandsSequence.Substring(i, Displacement);
+                commands.Add(command);
+            }
 
+            foreach (var command in commands)
+            {
                 Execute(command);
             }
         }
