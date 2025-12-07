@@ -13,20 +13,40 @@ internal abstract record Direction
     {
         if (directionEncoding.Equals(NORTH))
         {
-            return new North();
+            return CreateNorth();
         }
 
         if (directionEncoding.Equals(SOUTH))
         {
-            return new South();
+            return CreateSouth();
         }
 
         if (directionEncoding.Equals(WEST))
         {
-            return new West();
+            return CreateWest();
         }
 
+        return CreateEast();
+    }
+
+    private static Direction CreateEast()
+    {
         return new East();
+    }
+
+    private static Direction CreateWest()
+    {
+        return new West();
+    }
+
+    private static Direction CreateSouth()
+    {
+        return new South();
+    }
+
+    private static Direction CreateNorth()
+    {
+        return new North();
     }
 
     public abstract Direction RotateLeft();
@@ -39,12 +59,12 @@ internal abstract record Direction
     {
         public override Direction RotateLeft()
         {
-            return Create(NORTH);
+            return CreateNorth();
         }
 
         public override Direction RotateRight()
         {
-            return Create(SOUTH);
+            return CreateSouth();
         }
 
         public override Coordinates Move(Coordinates coordinates, int displacement)
@@ -57,12 +77,12 @@ internal abstract record Direction
     {
         public override Direction RotateLeft()
         {
-            return Create(SOUTH);
+            return CreateSouth();
         }
 
         public override Direction RotateRight()
         {
-            return Create(NORTH);
+            return CreateNorth();
         }
 
         public override Coordinates Move(Coordinates coordinates, int displacement)
@@ -75,12 +95,12 @@ internal abstract record Direction
     {
         public override Direction RotateLeft()
         {
-            return Create(EAST);
+            return CreateEast();
         }
 
         public override Direction RotateRight()
         {
-            return Create(WEST);
+            return CreateWest();
         }
 
         public override Coordinates Move(Coordinates coordinates, int displacement)
@@ -93,12 +113,12 @@ internal abstract record Direction
     {
         public override Direction RotateLeft()
         {
-            return Create(WEST);
+            return CreateWest();
         }
 
         public override Direction RotateRight()
         {
-            return Create(EAST);
+            return CreateEast();
         }
 
         public override Coordinates Move(Coordinates coordinates, int displacement)
